@@ -126,6 +126,7 @@ IResult Login(UserLogin user, IUserService service)
 
         var token = new JwtSecurityToken
         (
+            //yesss
             issuer: builder.Configuration["Jwt:Issuer"],
             audience: builder.Configuration["Jwt:Audience"],
             claims: claims,
@@ -135,7 +136,6 @@ IResult Login(UserLogin user, IUserService service)
                new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
                SecurityAlgorithms.HmacSha256)
         );
-
         var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
 
         return Results.Ok(tokenString);
